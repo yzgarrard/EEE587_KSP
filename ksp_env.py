@@ -150,7 +150,7 @@ class GameEnv(object):
 
         reward, done = self.epoch_ending(reward, done)
 
-        self.conn.ui.message("Reward: "+str(round(reward, 2)), duration=0.5)
+        self.conn.ui.message("Reward: " + str(round(reward, 2)), duration=0.5)
 
         self.counter += 1
 
@@ -219,6 +219,10 @@ class GameEnv(object):
         elif self.counter >= 60 and self.altitude() < 88:
             done = True
             print('rocket did not start within 60 moves')
+
+        elif self.difference() >= 10:
+            done = True
+            print('Pitch angle of ' + str(self.pitch()) + 'degrees is not admissible at this altitude')
 
         return reward, done
 
@@ -291,29 +295,29 @@ class GameEnv(object):
 
         return reward
 
-    def add_throttle(self, reward):
-        return reward + self.vessel.control.throttle*10
-
-    def include_velocity(self, reward):
-        return reward * self.vert_speed()**(1/3)
-
-    def include_heading(self, reward):
-        if 75 <= self.heading() <= 90:
-            reward = reward + (self.heading() - 75) / 10
-        elif 90 < self.heading() <= 105:
-            reward = reward + (105 - self.heading()) / 10
-        return reward
-
-    def include_orbit(self, reward):
-        if str(self.vessel.situation) == "VesselSituation.orbital" or\
-                str(self.vessel.situation) == "VesselSituation.sub_orbital":
-            reward = self.periapsis()**(1/9)
-        return reward
-
-    def lower_first_rewards(self, reward):
-        if self.counter < 10:
-            reward = reward / (10 - self.counter)
-        return reward
+    # def add_throttle(self, reward):
+    #     return reward + self.vessel.control.throttle*10
+    #
+    # def include_velocity(self, reward):
+    #     return reward * self.vert_speed()**(1/3)
+    #
+    # def include_heading(self, reward):
+    #     if 75 <= self.heading() <= 90:
+    #         reward = reward + (self.heading() - 75) / 10
+    #     elif 90 < self.heading() <= 105:
+    #         reward = reward + (105 - self.heading()) / 10
+    #     return reward
+    #
+    # def include_orbit(self, reward):
+    #     if str(self.vessel.situation) == "VesselSituation.orbital" or\
+    #             str(self.vessel.situation) == "VesselSituation.sub_orbital":
+    #         reward = self.periapsis()**(1/9)
+    #     return reward
+    #
+    # def lower_first_rewards(self, reward):
+    #     if self.counter < 10:
+    #         reward = reward / (10 - self.counter)
+    #     return reward
 
     def activate_engine(self):
         self.vessel.control.throttle = 1.0
@@ -322,5 +326,3 @@ class GameEnv(object):
 
     def get_altitude(self):
         return round(self.altitude_max, 2)
-
-

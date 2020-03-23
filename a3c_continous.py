@@ -17,6 +17,7 @@ from ksp_env import GameEnv
 
 print(conns)
 connections = [krpc.connect(**conns[i]) for i in range(N_WORKERS)]
+# connections = [krpc.connect()]
 
 env = GameEnv(conn=connections[0])
 env.reset(connections[0])
@@ -191,8 +192,8 @@ if __name__ == "__main__":
     sess.run(tf.global_variables_initializer())
 
     if OUTPUT_GRAPH:
-        if os.path.exists(LOG_DIR):
-            shutil.rmtree(LOG_DIR)
+        # if os.path.exists(LOG_DIR):
+        #     shutil.rmtree(LOG_DIR)
         tf.summary.FileWriter(LOG_DIR, sess.graph)
 
     worker_threads = []
