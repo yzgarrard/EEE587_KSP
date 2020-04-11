@@ -19,27 +19,27 @@ class GameEnv(object):
         self.pre_launch_setup()
 
         action_low = np.array([
-            -1,
-            -1
+            -1  # ,
+            # -1
         ])
 
         action_high = np.array([
-            1,
-            1
+            1  # ,
+            # 1
         ])
 
         self.action_space = spaces.Box(action_low, action_high, dtype=np.float32)
 
         low = np.array([
             0,
-            - 1,
-            - 1,
+            - 1  # ,
+            # - 1,
         ])
 
         high = np.array([
             1,
-            1,
-            1,
+            1  # ,
+            # 1,
         ])
 
         self.observation_space = spaces.Box(low, high, dtype=np.float32)
@@ -130,8 +130,9 @@ class GameEnv(object):
         start_act = self.ut()
 
         if CONTINUOUS:
-            self.vessel.control.pitch = action[0]
-            self.vessel.control.yaw = action[1]
+            self.vessel.control.yaw = action[0]
+            # self.vessel.control.pitch = action[0]
+            # self.vessel.control.yaw = action[1]
 
         else:
             self.vessel.control.pitch = 0
@@ -257,9 +258,11 @@ class GameEnv(object):
 
         state = [
             ((self.altitude() + 0.2) / MAX_ALT) / 1.2,
-            math.sin(math.radians(self.heading())) * (90 - self.pitch()) / 90,
+            # math.sin(math.radians(self.heading())) * (90 - self.pitch()) / 90,
             math.cos(math.radians(self.heading())) * (90 - self.pitch()) / 90,
         ]
+
+        # print("STATE: " + str(state))
 
         return state
 

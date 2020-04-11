@@ -6,7 +6,7 @@ ip = "127.0.0.1"
 
 # connections with instances of KSP
 # conns = [
-#    {'name': "Game ml1", "address": ip, "rpc_port": 50000, "stream_port": 50001},
+#    {'name': "Game ml1", "address": ip, "rpc_port": 50020, "stream_port": 50021},
 # ]
 # conns = [
 #    {'name': "Game ml1", "address": ip, "rpc_port": 50000, "stream_port": 50001},

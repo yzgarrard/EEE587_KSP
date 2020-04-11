@@ -13,7 +13,7 @@ for file in os.listdir(LOG_DIR):
 
 print("Opening: ", file_name)
 
-file_name = "results_fewer_admissible_inputs.csv"
+file_name = "results_reduced_states_and_controls.csv"
 
 def get_data():
     try:
