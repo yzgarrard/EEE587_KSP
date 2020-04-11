@@ -220,7 +220,7 @@ class GameEnv(object):
             done = True
             print('rocket did not start within 60 moves')
 
-        elif self.difference() >= 10:
+        elif self.difference() >= 20:
             done = True
             print('Pitch angle of ' + str(self.pitch()) + 'degrees is not admissible at this altitude')
 
