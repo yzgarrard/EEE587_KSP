@@ -39,7 +39,7 @@ Kerbal Space Program/game/GameData
 Download: https://krpc.github.io/krpc/_downloads/51d10d60684108532ec1a5b93393faab/LaunchIntoOrbit.craft and put this file to:
 Kerbal Space Program/game/Ships/VAB
 
-Download our save “kill” [https://drive.google.com/file/d/1L1DdeUdHpcMSmO8royVWocitVR93UwdE], unpack it and paste whole folder to:
+Download the save “kill” [https://drive.google.com/file/d/1L1DdeUdHpcMSmO8royVWocitVR93UwdE], unpack it and paste whole folder to:
 Kerbal Space Program/game/saves
 (if this save will not work, just create Sandbox game named “kill” go to Launchpad with LanuchIntoOrbit ship and save game with name “revivekerbals” when on the Lanuchpad)
 
@@ -52,7 +52,7 @@ You should see now the rocket on Launchpad and kRPC add on.
 
 You should either allow connection for certain ip or auto-accept new clients in advanced server settings.
 
-Clone our repository:
+Clone the repository:
 https://github.com/under-control/flytosky
 
 If you got connection you can start a3c_continous.py
