@@ -13,7 +13,6 @@ for file in os.listdir(LOG_DIR):
 
 print("Opening: ", file_name)
 
-file_name = "results_baseline.csv"
 
 def get_data():
     try:
@@ -40,9 +39,9 @@ def update():
     alt, rew, ser = read_data()
 
     plt.plot(ser, alt, label='altitude')
-    plt.xlabel("Episodes")
+    plt.xlabel("Epochs")
     plt.ylabel("Max alt / reward")
-    plt.title("Baseline Results")
+    plt.title("Sincos 2d yaw and pitch, altitude also as state")
     plt.plot(ser, rew, label='reward')
 
     z = numpy.polyfit(ser, alt, 1)
